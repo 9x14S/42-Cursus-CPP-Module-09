@@ -51,6 +51,8 @@ long RPN::eval( const std::string &expression )
 			case '*':
 			case '-':
 			case '/':
+				if (stack.size() < 2)
+					throw (std::exception());
 				long a = stack.top();
 				stack.pop();
 				long b = stack.top();
@@ -67,6 +69,8 @@ long RPN::eval( const std::string &expression )
 					stack.push(b - a);
 					break;
 				case '/':
+					if (a == 0)
+						throw (std::exception());
 					stack.push(b / a);
 					break;
 				}
