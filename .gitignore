@@ -1,0 +1,12 @@
+cpp00
+cpp01
+cpp02
+a.out
+*.o
+*.d
+*.a
+build
+*.gch
+.*.sw*
+t
+test*
