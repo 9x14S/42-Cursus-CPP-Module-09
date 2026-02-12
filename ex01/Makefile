@@ -6,7 +6,7 @@ CXX        := /usr/bin/c++
 CXXFLAGS   := -Wall -Wextra -Werror -MMD -std=c++98 -I.
 
 BUILD_DIR  := build
-SRCS       := main.cpp
+SRCS       := main.cpp RPN.cpp
 OBJS       := $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 DEPS       := $(OBJS:.o=.d)
 
