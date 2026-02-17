@@ -51,9 +51,12 @@ void PmergeMe::parse(int argc, char** argv)
 
 size_t PmergeMe::get_jacob_num(size_t n)
 {
-	if (n == 0) return 0;
-	if (n == 1) return 1;
-	size_t prev = 0, curr = 1;
+	if (n == 0)
+		return 0;
+	if (n == 1)
+		return 1;
+	size_t prev = 0;
+	size_t curr = 1;
 	for (size_t i = 2; i <= n; ++i)
 	{
 		size_t next = curr + 2 * prev;
