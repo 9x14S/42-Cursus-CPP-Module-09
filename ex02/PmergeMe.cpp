@@ -4,6 +4,9 @@
 
 #include "PmergeMe.hpp"
 
+int deque_comparisons = 0;
+int vector_comparisons = 0;
+
 // Orthodox Canonical Form
 PmergeMe::PmergeMe() : _vectime(0), _deqtime(0)
 {}
@@ -90,6 +93,7 @@ void PmergeMe::sort_vec(std::vector<int>& arr)
 	std::vector<std::pair<int, int> > pairs;
 	for (size_t i = 0; i < arr.size(); i += 2)
 	{
+		vector_comparisons++;
 		if (arr[i] > arr[i + 1])
 			pairs.push_back(std::make_pair(arr[i], arr[i + 1]));
 		else
@@ -173,6 +177,7 @@ void PmergeMe::sort_deque(std::deque<int>& arr)
 	std::deque<std::pair<int, int> > pairs;
 	for (size_t i = 0; i < arr.size(); i += 2)
 	{
+		deque_comparisons++;
 		if (arr[i] > arr[i + 1])
 			pairs.push_back(std::make_pair(arr[i], arr[i + 1]));
 		else
@@ -259,8 +264,10 @@ void PmergeMe::execute()
 	std::cout << "Time to process a range of " << _vec.size() 
 		<< " elements with std::vector : " << std::fixed << std::setprecision(5) 
 		<< _vectime << " us" << std::endl;
+	std::cout << "Sorted in " << vector_comparisons << " comparisons"<< std::endl;
 
 	std::cout << "Time to process a range of " << _deq.size() 
 		<< " elements with std::deque  : " << std::fixed << std::setprecision(5) 
 		<< _deqtime << " us" << std::endl;
+	std::cout << "Sorted in " << deque_comparisons << " comparisons"<< std::endl;
 }
