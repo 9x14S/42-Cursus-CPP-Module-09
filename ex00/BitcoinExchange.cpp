@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
 #include "BitcoinExchange.hpp"
 
@@ -121,7 +122,7 @@ void BitcoinExchange::processInput(const std::string& filename)
 
 		char* end;
 		double value = std::strtod(valueStr.c_str(), &end);
-		if (valueStr.empty() || *end != '\0' && *end != 'f')
+		if (valueStr.empty() || (*end != '\0' && *end != 'f'))
 		{
 			 std::cout << "Error: bad input => " << valueStr << std::endl;
 			 continue;
