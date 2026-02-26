@@ -31,6 +31,16 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& that)
 PmergeMe::~PmergeMe()
 {}
 
+bool comp_vec(int a, int b) {
+	vector_comparisons++;
+	return a < b;
+}
+
+bool comp_deque(int a, int b) {
+	deque_comparisons++;
+	return a < b;
+}
+
 void PmergeMe::parse(int argc, char** argv)
 {
 	for (int i = 1; i < argc; i++)
@@ -73,7 +83,7 @@ size_t PmergeMe::get_jacob_num(size_t n)
 void PmergeMe::insert_vec(std::vector<int>& main_chain, int val, size_t limit)
 {
 	std::vector<int>::iterator end = main_chain.begin() + limit;
-	std::vector<int>::iterator pos = std::lower_bound(main_chain.begin(), end, val);
+	std::vector<int>::iterator pos = std::lower_bound(main_chain.begin(), end, val, comp_vec);
 	main_chain.insert(pos, val);
 }
 
@@ -157,7 +167,7 @@ void PmergeMe::sort_vec(std::vector<int>& arr)
 void PmergeMe::insert_deque(std::deque<int>& main_chain, int val, size_t limit)
 {
 	std::deque<int>::iterator end = main_chain.begin() + limit;
-	std::deque<int>::iterator pos = std::lower_bound(main_chain.begin(), end, val);
+	std::deque<int>::iterator pos = std::lower_bound(main_chain.begin(), end, val, comp_deque);
 	main_chain.insert(pos, val);
 }
 
